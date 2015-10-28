@@ -5,11 +5,8 @@ using System.Web;
 
 namespace PasswordKeeper.Models.Logic
 {
-    public class CredentialType
+    public class CredentialType : PasswordKeeperBase 
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public DateTime DateModified { get; set; }
 
     }
 }
