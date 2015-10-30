@@ -19,6 +19,9 @@ namespace PasswordKeeper
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
+
+            config.Filters.Add(new AuthorizeAttribute());
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 

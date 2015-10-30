@@ -10,6 +10,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using PasswordKeeper.Models.DAL;
 using PasswordKeeper.Models.Logic;
+using System.Web;
+using System.Threading;
 
 namespace PasswordKeeper.Controllers.API
 {
@@ -20,6 +22,8 @@ namespace PasswordKeeper.Controllers.API
         // GET: api/Hosts
         public IQueryable<Host> GetHosts()
         {
+
+
             return db.Hosts;
         }
 

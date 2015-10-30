@@ -16,8 +16,8 @@ namespace PasswordKeeper.Models.Logic
 
         public int ID { get; set; }
 
-        [HiddenInput(DisplayValue = false)]
-        public DateTime DateModified { get; set; }
+        
+        public DateTime DateModified { get; private set; }
 
         public string Name { get; set; }
     }
