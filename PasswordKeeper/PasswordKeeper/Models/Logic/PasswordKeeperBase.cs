@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,7 +18,7 @@ namespace PasswordKeeper.Models.Logic
         public int ID { get; set; }
 
         
-        public DateTime DateModified { get; private set; }
+        public DateTime DateModified { get; set; }
 
         public string Name { get; set; }
     }
