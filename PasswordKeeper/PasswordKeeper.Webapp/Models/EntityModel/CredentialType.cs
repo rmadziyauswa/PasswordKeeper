@@ -22,7 +22,7 @@ namespace PasswordKeeper.Webapp.Models.EntityModel
     
         public int ID { get; set; }
         public string Name { get; set; }
-        public System.DateTime DateModified { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Credential> Credentials { get; set; }

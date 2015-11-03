@@ -11,109 +11,110 @@ using PasswordKeeper.Webapp.Models.Logic;
 
 namespace PasswordKeeper.Webapp.Controllers
 {
-    public class HostTypesController : Controller
+    public class CredentialTypesController : Controller
     {
         private PaswordEntities db = new PaswordEntities();
 
-        // GET: HostTypes
+        // GET: CredentialTypes
         public ActionResult Index()
         {
-            return View(db.HostTypes.ToList());
+            return View(db.CredentialTypes.ToList());
         }
 
-        // GET: HostTypes/Details/5
+        // GET: CredentialTypes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HostType hostType = db.HostTypes.Find(id);
-            if (hostType == null)
+            CredentialType credentialType = db.CredentialTypes.Find(id);
+            if (credentialType == null)
             {
                 return HttpNotFound();
             }
-            return View(hostType);
+            return View(credentialType);
         }
 
-        // GET: HostTypes/Create
+        // GET: CredentialTypes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: HostTypes/Create
+        // POST: CredentialTypes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Description,DateModified")] HostType hostType)
+        public ActionResult Create([Bind(Include = "ID,Name,DateModified")] CredentialType credentialType)
         {
             if (ModelState.IsValid)
             {
-                Kommon.UpdateDateModified(hostType);
-                db.HostTypes.Add(hostType);
+                Kommon.UpdateDateModified(credentialType);
+                db.CredentialTypes.Add(credentialType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(hostType);
+            return View(credentialType);
         }
 
-        // GET: HostTypes/Edit/5
+        // GET: CredentialTypes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HostType hostType = db.HostTypes.Find(id);
-            if (hostType == null)
+            CredentialType credentialType = db.CredentialTypes.Find(id);
+            if (credentialType == null)
             {
                 return HttpNotFound();
             }
-            return View(hostType);
+            return View(credentialType);
         }
 
-        // POST: HostTypes/Edit/5
+        // POST: CredentialTypes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Description,DateModified")] HostType hostType)
+        public ActionResult Edit([Bind(Include = "ID,Name,DateModified")] CredentialType credentialType)
         {
             if (ModelState.IsValid)
             {
-                Kommon.UpdateDateModified(hostType);
-                db.Entry(hostType).State = EntityState.Modified;
+                Kommon.UpdateDateModified(credentialType);
+
+                db.Entry(credentialType).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(hostType);
+            return View(credentialType);
         }
 
-        // GET: HostTypes/Delete/5
+        // GET: CredentialTypes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HostType hostType = db.HostTypes.Find(id);
-            if (hostType == null)
+            CredentialType credentialType = db.CredentialTypes.Find(id);
+            if (credentialType == null)
             {
                 return HttpNotFound();
             }
-            return View(hostType);
+            return View(credentialType);
         }
 
-        // POST: HostTypes/Delete/5
+        // POST: CredentialTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            HostType hostType = db.HostTypes.Find(id);
-            db.HostTypes.Remove(hostType);
+            CredentialType credentialType = db.CredentialTypes.Find(id);
+            db.CredentialTypes.Remove(credentialType);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

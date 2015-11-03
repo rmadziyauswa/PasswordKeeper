@@ -29,5 +29,6 @@ namespace PasswordKeeper.Webapp.Models.EntityModel
         public virtual DbSet<CredentialType> CredentialTypes { get; set; }
         public virtual DbSet<Host> Hosts { get; set; }
         public virtual DbSet<HostType> HostTypes { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
     }
 }

@@ -12,16 +12,11 @@ namespace PasswordKeeper.Webapp.Models.EntityModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Credential
+    public partial class C__MigrationHistory
     {
-        public int ID { get; set; }
-        public int CredentialTypeID { get; set; }
-        public int HostID { get; set; }
-        public string Password { get; set; }
-        public Nullable<System.DateTime> DateModified { get; set; }
-        public string Name { get; set; }
-    
-        public virtual CredentialType CredentialType { get; set; }
-        public virtual Host Host { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }

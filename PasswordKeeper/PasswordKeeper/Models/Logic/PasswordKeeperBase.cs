@@ -18,7 +18,7 @@ namespace PasswordKeeper.Models.Logic
         public int ID { get; set; }
 
         
-        public DateTime DateModified { get; set; }
+        public DateTime? DateModified { get; set; }
 
         public string Name { get; set; }
     }

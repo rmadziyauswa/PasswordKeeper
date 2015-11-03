@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-PasswordKeeper-20151026051505.mdf;Initial Catalog=aspnet-PasswordKeeper-20151026051505;Integrated Security=True" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\renilative\\Dropbox\\Work\\\.Net\ Projects\\PasswordKeeper\\PasswordKeeper\\PasswordKeeper\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
-  </parameter>
-  <parameter name="PasswordKeeper.Models.DAL.ApplicationDbContext-Web.config Connection String" description="PasswordKeeper.Models.DAL.ApplicationDbContext Connection String used in web.config by the application to access the database." defaultValue="PasswordKeeper.Models.DAL.ApplicationDbContext_ConnectionString" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\renilative\\Dropbox\\Work\\\.Net\ Projects\\PasswordKeeper\\PasswordKeeper\\PasswordKeeper\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='PasswordKeeper.Models.DAL.ApplicationDbContext']/@connectionString" />
-  </parameter>
-</parameters>
