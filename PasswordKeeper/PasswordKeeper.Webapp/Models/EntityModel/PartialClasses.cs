@@ -21,4 +21,9 @@ namespace PasswordKeeper.Webapp.Models.EntityModel
     {
 
     }
+
+    [MetadataType(typeof(CredentialMetadata))]
+    public partial class Credential
+    {
+    }
 }

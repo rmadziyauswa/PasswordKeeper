@@ -24,6 +24,7 @@ namespace PasswordKeeper.Webapp.Models.EntityModel
         public string Name { get; set; }
         public int HostTypeID { get; set; }
         public Nullable<System.DateTime> DateModified { get; set; }
+        public string UserEmail { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Credential> Credentials { get; set; }

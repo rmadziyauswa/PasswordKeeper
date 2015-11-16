@@ -1,14 +1,12 @@
 ﻿@model PasswordKeeper.Webapp.Models.EntityModel.CredentialType
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Credential Type Details";
 }
 
-<h2>Details</h2>
+<h2>Credential Type Details</h2>
 
 <div>
-    <h4>CredentialType</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -30,5 +28,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("All Credential Types", "Index")
 </p>

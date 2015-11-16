@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Credential Types</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -17,17 +17,22 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a title="Details" href="@Url.Action("Details", new { id = item.ID})">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </a>
+            </td>
+            <td>
+                <a title="Edit" href="@Url.Action("Edit", new { id = item.ID})"><i class="icon-pencil"></i></a>
+                |
+                <a title="View Credentials" href="@Url.Action("GetByCredentialType","Credentials", new { id = item.ID})"><i class="icon-eye-open"></i></a>
+                |
+                <a title="Delete" href="@Url.Action("Delete", new { id = item.ID})"><i class="icon-trash"></i></a>
+            </td>
+        </tr>
+    }
 
 </table>

@@ -11,6 +11,7 @@ using PasswordKeeper.Webapp.Models.Logic;
 
 namespace PasswordKeeper.Webapp.Controllers
 {
+    [Authorize]
     public class CredentialTypesController : Controller
     {
         private PaswordEntities db = new PaswordEntities();

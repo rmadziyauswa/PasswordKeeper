@@ -32,4 +32,21 @@ namespace PasswordKeeper.Webapp.Models.MetaData
         [MaxLength(20,ErrorMessage ="Cannot Be more than 20 characters")]
         public string Name;
     }
+
+
+    public class CredentialMetadata
+    {
+        [Display(Name ="Credential Type")]
+        public int CredentialTypeID { get; set; }
+        [Display(Name ="Host")]
+        public int HostID { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [MaxLength(20, ErrorMessage = "Cannot Be more than 20 characters")]
+        public string Password { get; set; }
+        [Required]
+        [Display(Name ="Credential Name")]
+        [MaxLength(20, ErrorMessage = "Cannot Be more than 20 characters")]
+        public string Name { get; set; }
+    }
 }

@@ -12,6 +12,8 @@ namespace PasswordKeeper.Models.Logic
         public int CredentialTypeID { get; set; }
         [Required]
         public int HostID { get; set; }
+        [Required]
+        public string UserEmail { get; set; }
         
         public string Password { get; set; }
 

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<PasswordKeeper.Webapp.Models.EntityModel.HostType>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Host Types";
 }
 
-<h2>Index</h2>
+<h2>Host Types</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -23,16 +23,21 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            <a href="@Url.Action("Details", new { id = item.ID})">
+                @Html.DisplayFor(modelItem => item.Name)
+            </a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
+            <a title="Edit" href="@Url.Action("Edit", new { id=item.ID})"><i class="icon-pencil"></i></a>
+            |
+            <a title="View Hosts" href="@Url.Action("GetByHostType", "Hosts", new { id = item.ID})"><i class="icon-eye-open"></i></a>           
+            |
+            <a title="Delete" href="@Url.Action("Delete", new { id=item.ID})"><i class="icon-trash"></i></a>
+
+</td>
     </tr>
 }
 

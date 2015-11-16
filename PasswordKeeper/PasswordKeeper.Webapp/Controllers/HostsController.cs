@@ -11,6 +11,7 @@ using PasswordKeeper.Webapp.Models.Logic;
 
 namespace PasswordKeeper.Webapp.Controllers
 {
+    [Authorize]
     public class HostsController : Controller
     {
         private PaswordEntities db = new PaswordEntities();
@@ -18,9 +19,38 @@ namespace PasswordKeeper.Webapp.Controllers
         // GET: Hosts
         public ActionResult Index()
         {
-            var hosts = db.Hosts.Include(h => h.HostType);
-            return View(hosts.ToList());
+            //string userEmail = HttpContext.User.Identity.Name;
+            var hosts = db.Hosts.Include(h => h.HostType).Where(h => h.UserEmail == HttpContext.User.Identity.Name);
+            return View(hosts);
         }
+
+        public ActionResult GetByHostType(int? id)
+        {
+            //get host given a host type id
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var hosts = db.Hosts.Include(h => h.HostType).Where(h => h.UserEmail == HttpContext.User.Identity.Name && h.HostTypeID == id);
+
+            return View("Index", hosts);
+
+        }
+
+        [HttpPost]
+        public ActionResult Search(string filter)
+        {
+            //get host given a host type id
+            if (filter == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound );
+            }
+            var hosts = db.Hosts.Include(h => h.HostType).Where(h => h.UserEmail == HttpContext.User.Identity.Name && h.Name.Contains(filter));
+
+            return View("Index", hosts);
+
+        }
+
 
         // GET: Hosts/Details/5
         public ActionResult Details(int? id)
@@ -29,7 +59,9 @@ namespace PasswordKeeper.Webapp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Host host = db.Hosts.Find(id);
+            Host host = db.Hosts.Include(h => h.HostType).Where(h => h.UserEmail == HttpContext.User.Identity.Name && h.ID==id).FirstOrDefault();
+
+
             if (host == null)
             {
                 return HttpNotFound();
@@ -70,7 +102,9 @@ namespace PasswordKeeper.Webapp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Host host = db.Hosts.Find(id);
+            
+            Host host = db.Hosts.Include(h => h.HostType).Where(h => h.UserEmail == HttpContext.User.Identity.Name && h.ID == id).FirstOrDefault();
+
             if (host == null)
             {
                 return HttpNotFound();
@@ -104,7 +138,8 @@ namespace PasswordKeeper.Webapp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Host host = db.Hosts.Find(id);
+            Host host = db.Hosts.Include(h => h.HostType).Where(h => h.UserEmail == HttpContext.User.Identity.Name && h.ID == id).FirstOrDefault();
+
             if (host == null)
             {
                 return HttpNotFound();
@@ -118,6 +153,15 @@ namespace PasswordKeeper.Webapp.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Host host = db.Hosts.Find(id);
+
+            //make sure the current user owns this host
+
+            Host myHost = db.Hosts.Include(h => h.HostType).Where(h => h.UserEmail == HttpContext.User.Identity.Name && h.ID == id).FirstOrDefault();
+
+            if (myHost == null)
+            {
+                return HttpNotFound();
+            }
             db.Hosts.Remove(host);
             db.SaveChanges();
             return RedirectToAction("Index");
